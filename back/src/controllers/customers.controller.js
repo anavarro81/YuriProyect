@@ -1,0 +1,35 @@
+const Customer = require('../models/customer.model');
+const {validateClient} = require('../utils/validator');
+const {sendReceiptEmail} = require('../utils/sendEmail');
+
+const newCustomer = async (req, res) => {
+
+
+
+    try {
+
+        if (req.files) {
+            console.log('Archivo subido:', req.files);
+        }
+
+        // const validCustomer = await validateClient(req.body);
+
+        // if (validCustomer.error) {
+        //     return res.status(400).json(validCustomer);
+        // }
+    
+        // const newCustomer = new Customer(req.body);
+        // const clienteCreado = await newCustomer.save();
+
+        // await sendReceiptEmail(clienteCreado)
+        // console.log('Correo enviado... ');    
+
+        // return res.status(201).json(clienteCreado);            
+        return res.status(201).json({message: 'Cliente creado correctamente'}); 
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+
+}
+
+module.exports = {newCustomer}
